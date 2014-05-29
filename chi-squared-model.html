@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <script src="js/domready.js"></script>
+        <script src="lib/MathBoxjs/MathBox-bundle.min.js"></script>
+        <script>
+            function chiSquared( x ) {
+                if( x <= 0 ) {
+                    return 0;
+                } else {
+                    return Math.exp( -x / 2 ) / ( Math.sqrt( 2 * Math.PI ) * Math.sqrt( x ) );
+                }
+            }
+
+            DomReady.ready( function() {
+                ThreeBox.preload( [
+                    'lib/MathBoxjs/MathBox.glsl.html'
+                    ], function() {
+
+                        var mathbox = mathBox( {
+                            cameraControls: false,
+                            cursor: true,
+                            controlClass: ThreeBox.OrbitControls,
+                            elementResize: false,
+                            fullscreen: true,
+                            screenshot: true,
+                            stats: false,
+                            scale: 1
+                        } ).start();
+
+                        mathbox
+                            .viewport( {
+                                type: 'cartesian',
+                                range: [ [0, 10], [0, 0.4] ],
+                                scale: [ 1, 1 ]
+                            }  )
+                            .camera( {
+                                orbit: 4,
+                            } )
+
+                            var director = window.director = new MathBox.Director( mathbox, presentation );
+
+                            window.addEventListener( 'touchstart', function( e ) {
+                                director.forward();
+                            } );
+                            window.addEventListener( 'keydown', function( e ) {
+                                if( e.keyCode == 38 || e.keyCode == 37 ) {
+                                    director.back();
+                                } else if( e.keyCode == 40 || e.keyCode == 39 ) {
+                                    director.forward();
+                                } else {
+                                    return;
+                                }
+                            } );
+
+                } );
+            } )
+        </script>
+        <script>
+            var presentation = [
+                [
+                    [
+                        'add', 'axis', {
+                            axis: 0,
+                            color: 0x000000,
+                            ticks: 8,
+                            lineWidth: 2,
+                            labels: true
+                        }, {
+                            duration: 500
+                        }
+                    ],
+                    [
+                        'add', 'surface', {
+                            id: 'area-surface',
+                            n: [ 64, 64 ],
+                            domain: [ [ 1.967, 1.967 ], [ 0, 0.3 ] ],
+                            expression: function( x, y ) {
+                                var yPoint = chiSquared( x ) - y;
+                                if( yPoint > 0 ) {
+                                    return [ x, yPoint ];
+                                } else {
+                                    return [ x, 0 ];
+                                }
+                            },
+                            mesh: true
+                        }
+                    ],
+                    [
+                        'add', 'curve', {
+                            id: 'chi-squared-curve',
+                            domain: [ 0, 0 ],
+                            lineWidth: 8,
+                            expression: function( x ) {
+                                return  chiSquared( x );
+                            }
+                        }
+                    ]
+                ],
+                [
+                    [
+                        'animate', '#chi-squared-curve', {
+                            domain: [ 0, 10 ]
+                        }, {
+                            duration: 3000
+                        }
+                    ],
+                    [
+                        'animate', 'camera', {
+                            orbit: 1.5,
+                            lookAt: [ 0.2, -0.7, 0]
+                        }, {
+                            duration: 4000
+                        }
+                    ]
+                ],
+                [
+                    [
+                        'animate', '#area-surface', {
+                            domain: [ [ 1.967, 10 ], [ 0, 0.3 ] ]
+                        }, {
+                            duration: 2000
+                        }
+                    ]
+                ],
+                [
+                    [
+                        'animate', 'camera', {
+                            orbit: 4,
+                            lookAt: [ 0, 0, 0 ]
+                        }, {
+                            duration: 3000
+                        }
+                    ]
+                ]
+            ]
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <script src="js/domready.js"></script>
+        <script src="lib/MathBoxjs/MathBox-bundle.min.js"></script>
+        <script>
+            function studentTModel( x ) {
+                return 5.41412 * Math.pow( 10, 94 ) *
+                        Math.pow( ( 1 / ( 95.168 + x * x ) ), 48.084 );
+            }
+
+            DomReady.ready( function() {
+                ThreeBox.preload( [
+                    'lib/MathBoxjs/MathBox.glsl.html'
+                    ], function() {
+
+                        var mathbox = mathBox( {
+                            cameraControls: false,
+                            cursor: true,
+                            controlClass: ThreeBox.OrbitControls,
+                            elementResize: false,
+                            fullscreen: true,
+                            screenshot: true,
+                            stats: false,
+                            scale: 1
+                        } ).start();
+
+                        mathbox
+                            .viewport( {
+                                type: 'cartesian',
+                                range: [ [-4, 4], [0, 0.4] ],
+                                scale: [ 1, 1 ]
+                            }  )
+                            .camera( {
+                                orbit: 4,
+                            } )
+                            //
+                            // .axis( {
+                            //     id: 'x',
+                            //     axis: 0,
+                            //     color: 'black',
+                            //     ticks: 5,
+                            //     labels: true
+                            // } )
+                            // .surface( {
+                            //     id: 'area-surface',
+                            //     n: [ 128, 128 ],
+                            //     domain: [ [0, 4], [0, 0.4] ],
+                            //     expression: function( x, y ) {
+                            //         var yPoint = studentTModel( x ) - y;
+                            //         if( yPoint > 0 ) {
+                            //             return [ x, yPoint ];
+                            //         } else {
+                            //             return [ x, 0 ];
+                            //         }
+                            //     },
+                            //     shaded: false
+                            // } )
+                            // .curve( {
+                            //     id: 'student-curve',
+                            //     domain: [ -4, 4 ],
+                            //     expression: function( x ) {
+                            //         return  studentTModel( x );
+                            //     }
+                            // } );
+
+                            // var domainSet = false;
+                            // setInterval( function() {
+                            //     if( !domainSet ) {
+                            //         mathbox.animate( '#area-surface', {
+                            //             domain: [ [6, 6], [0, 0.1] ],
+                            //         }, {
+                            //             duration: 1500
+                            //         } );
+                            //         domainSet = true;
+                            //     } else {
+                            //         mathbox.animate( '#area-surface', {
+                            //             domain: [ [6, 15], [0, 0.1] ],
+                            //         }, {
+                            //             duration: 1500
+                            //         } );
+                            //         domainSet = false;
+                            //     }
+                            // }, 2500);
+
+                            var director = window.director = new MathBox.Director( mathbox, presentation );
+
+                            window.addEventListener( 'touchstart', function( e ) {
+                                director.forward();
+                            } );
+                            window.addEventListener( 'keydown', function( e ) {
+                                if( e.keyCode == 38 || e.keyCode == 37 ) {
+                                    director.back();
+                                } else if( e.keyCode == 40 || e.keyCode == 39 ) {
+                                    director.forward();
+                                } else {
+                                    return;
+                                }
+                            } );
+
+                } );
+            } )
+        </script>
+        <script>
+            var presentation = [
+                [
+                    [
+                        'add', 'axis', {
+                            axis: 0,
+                            color: 0x000000,
+                            ticks: 8,
+                            lineWidth: 2,
+                            labels: true
+                        }, {
+                            duration: 500
+                        }
+                    ],
+                    [
+                        'add', 'surface', {
+                            id: 'area-surface',
+                            n: [ 64, 64 ],
+                            domain: [ [ 1.53, 1.53 ], [ 0, 0.4 ] ],
+                            expression: function( x, y ) {
+                                var yPoint = studentTModel( x ) - y;
+                                if( yPoint > 0 ) {
+                                    return [ x, yPoint ];
+                                } else {
+                                    return [ x, 0 ];
+                                }
+                            },
+                            mesh: true
+                        }
+                    ],
+                    [
+                        'add', 'curve', {
+                            id: 'student-curve',
+                            domain: [ -4, -4 ],
+                            lineWidth: 8,
+                            expression: function( x ) {
+                                return  studentTModel( x );
+                            }
+                        }
+                    ]
+                ],
+                [
+                    [
+                        'animate', '#student-curve', {
+                            domain: [ -4, 4 ]
+                        }, {
+                            duration: 3000
+                        }
+                    ],
+                    [
+                        'animate', 'camera', {
+                            orbit: 1.2,
+                            lookAt: [ 0.5, -0.7, 0]
+                        }, {
+                            duration: 4000
+                        }
+                    ]
+                ],
+                [
+                    [
+                        'animate', '#area-surface', {
+                            domain: [ [ 1.53, 4 ], [ 0, 0.4 ] ]
+                        }, {
+                            duration: 2000
+                        }
+                    ]
+                ],
+                [
+                    [
+                        'animate', 'camera', {
+                            orbit: 4,
+                            lookAt: [ 0, 0, 0 ]
+                        }, {
+                            duration: 3000
+                        }
+                    ]
+                ]
+            ]
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

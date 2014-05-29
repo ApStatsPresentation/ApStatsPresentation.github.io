@@ -1,0 +1,547 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+    <head>
+
+        <title>AP Statistics Presentation</title>
+
+
+
+        <!-- BEGIN META! -->
+        <meta charset="utf-8">
+        <meta name="description" content="A presentation for AP Statistics showing whether or not Freshman get more sleep than juniors">
+        <meta name="author" content="Jeremy Asuncion, Jack Vang, Jay Calunsag, David Escalante">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <!-- END META! -->
+
+        <link rel="stylesheet" href="lib/reveal.js/css/reveal.min.css">
+        <link rel="stylesheet" href="css/custom.css">
+
+        <script type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <div class="slides">
+
+                <section>
+                    <h1 style="font-size: 600%">Do Freshman Get More Sleep than Juniors?</h1>
+                    <h2>By Jeremy Asuncion, Jack Vang, Jay Calunsag, David Escalante</h2>
+                </section>
+
+                <section>
+                    <section>
+                        <h1 style="font-size: 1000%">Hypothesis</h1>
+                    </section>
+                    <section>
+                        <h2 class="fragment" style="font-size: 500%">
+                            \( H_0 \): Freshmen get the same amount of sleep as Juniors.
+                        </h2>
+                        <div style="height: 60px"></div>
+                        <h2 class="fragment" style="font-size: 500%">
+                            \( H_a \): Freshmen get more sleep than Juniors.
+                        </h2>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1 style="font-size: 1000%">Experimental Design</h1>
+                    </section>
+                    <section>
+                        <ul style="list-style-image: url('images/sum.png')">
+                            <li class="fragment" style="font-size:250%">
+                                <p>Survey with two questions: Grade Level and Mean Hours of Sleep</p>
+                            </li>
+                            <li class="fragment" style="font-size:250%">
+                                <p>Four populations were sampled: Freshmen, Sophomores, Juniors, and Seniors</p>
+                            </li>
+                            <li class="fragment" style="font-size:250%">
+                                <p>Sampling Method:</p>
+                            </li>
+                            <ul style="list-style-image: url('images/int.png')">
+                                <li class="fragment" style="font-size:250%">
+                                    <p>
+                                        Cluster sample; 9 classes selected randomly using
+                                        <a href="http://www.random.org/integers/">true random number generator</a>
+                                    </p>
+                                </li>
+                                <li class="fragment" style="font-size:250%">
+                                    <p>Only data from Freshmen and Juniors were kept</p>
+                                </li>
+                                <li class="fragment" style="font-size:250%">
+                                    <p>50 data were required from both Freshmen and Juniors</p>
+                                </li>
+                            </ul>
+                            <li class="fragment" style="font-size:250%">
+                                <p>
+                                    Surveys with obviously unrealistic results were not considered
+                                    &#8212; for example, no hours of sleep
+                                </p>
+                            </li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1 style="font-size: 1000%">Difference of Means</h1>
+                    </section>
+                    <section>
+                        <h2 class="fragment" style="font-size: 400%">
+                            \( \mu_f = \) mean hours of sleep for Freshmen.
+                        </h2>
+                        <div style="height: 60px"></div>
+                        <h2 class="fragment" style="font-size: 400%">
+                            \( \mu_j = \) mean hours of sleep for Juniors.
+                        </h2>
+                    </section>
+                    <section>
+                        <h2 class="fragment" style="font-size: 400%">
+                            \[
+                                \begin{split}
+                                    &H_0: \mu_f - \mu_j= 0  \\
+                                    &\implies \mu_f = \mu_j
+                                \end{split}
+                            \]
+                        </h2>
+                        <div style="height: 80px"></div>
+                        <h2 class="fragment" style="font-size: 400%">
+                            \[
+                                \begin{split}
+                                    &H_a: \mu_f - \mu_j > 0  \\
+                                    &\implies \mu_f > \mu_j
+                                \end{split}
+                            \]
+                        </h2>
+                    </section>
+                    <section>
+                        <h1 style="font-size: 1000%">Assumptions</h1>
+                    </section>
+                    <section>
+                        <ul style="list-style-image: url('images/sum.png')">
+                            <li class="fragment" style="font-size:350%">
+                                <p>
+                                    <b>Randomization</b>:
+                                    Classes were randomly selected using TRG
+                                </p>
+                            </li>
+                            <li class="fragment" style="font-size:350%">
+                                <p>
+                                    <b>10% Conditions</b>:
+                                    The freshmen sample satisfy this conditon if a randomly selected
+                                    subset of \(n = 50 \) data is selected; the Juniors satisfy this condition
+                                </p>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <ul style="list-style-image: url('images/sum.png')">
+                            <li class="fragment" style="font-size:250%">
+                                <p>
+                                    <b>Nearly Normal</b>:
+                                    <img src="images/Histogram.png">
+                                </p>
+                            </li>
+                            <li class="fragment" style="font-size:250%">
+                                <p>
+                                    <b>Independence Conditions</b>:
+                                    Assume that Juniors and Sophomores are independent, and that each
+                                    student from each class is independent(That's right! No one has friends!)
+                                </p>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 style="font-size: 300%">
+                            <span class="fragment">
+                                \( \displaystyle t = \)
+                            </span>
+                            <span class="fragment">
+                                \( \displaystyle
+                                    \frac{\bar{x}_f - \bar{x}_j}{\sqrt{\frac{s_f^2}{n_f} + \frac{s_j^2}{n_j}}}
+                                \)
+                            </span>
+                            <span class="fragment">
+                                \( \displaystyle
+                                    = \frac{6.71 - 6.39}{\sqrt{\frac{2.16}{49} + \frac{1.99}{48}}}
+                                \)
+                            </span>
+                            <span class="fragment">
+                                \(\displaystyle
+                                    = 1.53
+                                \)
+                            </span>
+                        </h2>
+                        <h2 style="font-size: 300%">
+                            <span class="fragment">
+                                \( \displaystyle
+                                    df =
+                                \)
+                            </span>
+                            <span class="fragment">
+                                \( \displaystyle
+                                    \frac{\left( \frac{s_f^2}{n_f} + \frac{s_j^2}{n_j}\right)^2}
+                                         {\frac{1}{n_f - 1}\left( \frac{s_f^2}{n_f} \right)^2 +
+	                                      \frac{1}{n_j - 1}\left( \frac{s_j^2}{n_j} \right)^2
+	                                     }
+                                \)
+                            </span>
+                            <span class="fragment">
+                                \( \displaystyle
+                                = \frac{\left( \frac{2.36}{49} + \frac{1.99}{48}\right)^2}
+		                               {\frac{1}{49 - 1}\left( \frac{2.36}{49} \right)^2 +
+			                            \frac{1}{48 - 1}\left( \frac{1.99}{48} \right)^2
+			                           }
+                                \)
+                            </span>
+                            <span class="fragment">
+                                \( \displaystyle
+                                    = 95.168
+                                \)
+                            </span>
+                        </h2>
+                    </section>
+                    <section>
+                        <h2 style="font-size: 300%">
+                            <span class="fragment">
+                                \( \displaystyle
+                                    p
+                                \)
+                            </span>
+                            <span class="fragment">
+                                \( \displaystyle
+                                    = P\left( t_{95.168} > 1.53 \right)
+                                \)
+                            </span>
+                            <div style="height: 80px"></div>
+                            <span class="fragment">
+                                \( \displaystyle
+                                    = 1 - \int_{-\infty}^t \left( \frac{\Gamma\left( \frac{df + 1}{2} \right)}
+				                               {\sqrt{df \cdot \pi} \Gamma\left( \frac{df}{2} \right)}
+				                          \left( 1 + \frac{x^2}{df} \right)^{-\frac{df + 1}{2}}
+				                   \right) dx
+                                \)
+                            </span>
+                            <div style="height: 80px"></div>
+                            <span class="fragment">
+                                = 1 - 0.935 = 0.065
+                            </span>
+                            <div style="height: 80px"></div>
+                            <a class="fragment" target="_blank" href="student-t-model.html">Graph</a>
+                        </h2>
+                    </section>
+
+                </section>
+                <section>
+                    <section>
+                        <h1 style="font-size: 1000%">\( \chi^2 \) Test of Homogeneity</h1>
+                    </section>
+                    <section>
+                        <h2 class="fragment" style="font-size: 300%">
+                            \( H_0 \): The distribution of average sleep times for Freshmen is
+                            the same as the distribution of average sleep times for Juniors
+                        </h2>
+                        <div style="height: 80px"></div>
+                        <h2 class="fragment" style="font-size: 300%">
+                            \( H_a \): The distribution of average sleep times are not the same
+                        </h2>
+                        <div style="height: 80px"></div>
+                        <h2 class="fragment" style="font-size: 300%">
+                            If \( H_a \) is true, we'd have to check the standardized residuals,
+                            \( \displaystyle C = \frac{O - E}{\sqrt{E}} \), to see who got more sleep.
+                        </h2>
+                    </section>
+                    <section>
+                        <ul style="list-style-image: url('images/sum.png')">
+                            <li class="fragment" style="font-size:350%">
+                                <p>
+                                    Data is categorized into two categories:
+                                </p>
+                            </li>
+                            <ul style="list-style-image: url('images/int.png')">
+                                <li class="fragment" style="font-size: 350%">
+                                    <p>
+                                        \( \mu \geq 8 \) &#8212; required amount of sleep for teenager
+                                    </p>
+                                </li>
+                                <li class="fragment" style="font-size: 350%">
+                                    <p>
+                                        \( \mu < 8 \) &#8212; less than the required amount
+                                    </p>
+                                </li>
+                            </ul>
+                            <li class="fragment" style="font-size:350%">
+                                <p>
+                                    There are two populations(Freshmen and Juniors) and one variable(Average sleep time),
+                                    therefore \( \chi^2 \) test of homogeneity is used
+                                </p>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <img src="images/Table.png">
+                        <!-- <h1 style="font-size: 400%">
+                            <table class="present">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Freshmen</th>
+                                        <th>Junior</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>\( \geq 8\)</td>
+                                        <td>21</td>
+                                        <td>10</td>
+                                        <td>31</td>
+                                    </tr>
+                                    <tr>
+                                        <td>\( &#60; 8\)</td>
+                                        <td>43</td>
+                                        <td>38</td>
+                                        <td>81</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total</td>
+                                        <td>64</td>
+                                        <td>48</td>
+                                        <td>112</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </h1> -->
+                        <h2 style="font-size: 400%">
+                            \[
+                                df = \left( R - 1 \right)\left( C - 1 \right)
+                                = 1 \cdot 1 = 1
+                            \]
+                        </h2>
+                    </section>
+                    <section>
+                        <h1 style="font-size: 1000%">Assumptions</h1>
+                    </section>
+                    <section>
+                        <ul style="list-style-image: url('images/sum.png')">
+                            <li class="fragment" style="font-size:450%">
+                                <p>
+                                    <b>Counted Data</b>:
+                                    Since the data was categorized, we have counted data
+                                </p>
+                            </li>
+                            <div style="height: 50px"></div>
+                            <li class="fragment" style="font-size:450%">
+                                <p>
+                                    <b>Randomization</b>:
+                                    A TRG was used to randomly select classes
+                                </p>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <ul style="list-style-image: url('images/sum.png')">
+                            <li class="fragment" style="font-size:500%">
+                                <p>
+                                    <b>Expected Cell Frequency</b>:
+                                </p>
+                            </li>
+                        </ul>
+                        <div style="height: 50px"></div>
+                        <h2 class="fragment" style="font-size: 400%">
+                            \( \displaystyle
+                                \frac{1}{112}
+                                \begin{pmatrix}
+                                    31 \\ 81
+                                \end{pmatrix}
+                                \begin{pmatrix}
+                                    64 & 48
+                                \end{pmatrix}
+                            \)
+                        </h2>
+                        <h2 class="fragment" style="font-size: 400%">
+                            \( \displaystyle
+                                =
+                                \begin{pmatrix}
+                                    17.174 & 13.286 \\
+                                    46.286 & 34.714
+                                \end{pmatrix}
+                            \)
+                        </h2>
+                    </section>
+                    <section>
+                        <h2 style="font-size: 350%">
+                            <span class="fragment">
+                                \( \displaystyle
+                                    \chi^2 =
+                                \)
+                            </span>
+                            <span class="fragment">
+                                \( \displaystyle
+                                    \sum_{i = 1}^4 \frac{\left( O_i - E_i \right)^2}{E_i}
+                                \)
+                            </span>
+                            <span class="fragment">
+                                \( \displaystyle
+                                    = \frac{\left( 21 - 17.174 \right)^2}{17.174}
+                                \)
+                            </span>
+                            <span class="fragment">
+                                \( \displaystyle
+                                    + \frac{\left( 10 - 13.286 \right)^2}{13.286}
+                                \)
+                            </span>
+                            <span class="fragment">
+                                \( \displaystyle
+                                    + \frac{\left( 43 - 46.286 \right)^2}{46.286}
+                                \)
+                            </span>
+                            <span class="fragment">
+                                \( \displaystyle
+                                    + \frac{\left( 38 - 34.714 \right)^2}{34.714}
+                                \)
+                            </span>
+                            <span class="fragment">
+                                \( \displaystyle
+                                    = 1.967
+                                \)
+                            </span>
+                        </h2>
+                    </section>
+                    <section>
+                        <h2 style="font-size: 300%">
+                            <span class="fragment">
+                                \( \displaystyle
+                                    p
+                                \)
+                            </span>
+                            <span class="fragment">
+                                \( \displaystyle
+                                    = 2P\left( \chi^2 > 1.967 \right)
+                                \)
+                            </span>
+                            <div style="height: 80px"></div>
+                            <span class="fragment">
+                                \( \displaystyle
+                                    = 1 - \int_0^x \left( \frac{x^{df/2 - 1} \operatorname{exp}\left( -\frac{x}{2} \right)}
+				                                           {2^{df/2} \Gamma\left( \frac{df}{2} \right)} \right) dx
+                                \)
+                            </span>
+                            <div style="height: 80px"></div>
+                            <span class="fragment">
+                                = 1 - 0.839 = 0.161
+                            </span>
+                            <div style="height: 80px"></div>
+                            <a class="fragment" target="_blank" href="chi-squared-model.html">Graph</a>
+                        </h2>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1 style="font-size: 1000%">Conclusions</h1>
+                    </section>
+                    <section>
+                        <ul style="list-style-image: url('images/sum.png')">
+                            <li class="fragment" style="font-size:450%">
+                                <p>
+                                    We used an \( \alpha = 0.05 \)
+                                </p>
+                            </li>
+                            <div style="height: 50px"></div>
+                            <li class="fragment" style="font-size:450%">
+                                <p>
+                                    \( p_t = 0.065 > \alpha = 0.05 \)
+                                    and
+                                    \( p_{\chi^2} = 0.161 > \alpha = 0.05 \),
+                                    so we fail to reject the null hypothesis
+                                </p>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h1 style="font-size: 1000%">WHAT DOES IT MEAN?</h1>
+                    </section>
+                    <section>
+                        <ul style="list-style-image: url('images/sum.png')">
+                            <li class="fragment" style="font-size:450%">
+                                <p>
+                                    There isn't enough evidence to suggest Freshmen get more sleep than
+                                    juniors
+                                </p>
+                            </li>
+                            <div style="height: 50px"></div>
+                            <li class="fragment" style="font-size:450%">
+                                <p>
+                                    It appears that both Freshmen and Juniors get the same amount of sleep
+                                </p>
+                            </li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1 style="font-size: 1000%">Related Studies</h1>
+                    </section>
+                    <section>
+                        <ul style="list-style-image: url('images/sum.png')">
+                            <li class="fragment" style="font-size:250%">
+                                <p>
+                                    A study found that approximately 20% of Seniors had more sleep deficits than Freshmen
+                                </p>
+                            </li>
+                            <div style="height: 50px"></div>
+                            <li class="fragment" style="font-size:250%">
+                                <p>
+                                    This may suggest that there were errors in our study
+                                </p>
+                            </li>
+                            <li class="fragment" style="font-size:250%">
+                                <p>
+                                        THIS IS THE LINK \( \Rightarrow \) <a href="http://goo.gl/1DgejY">http://goo.gl/1DgejY</a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </section>
+                    </section>
+                <section data-background="images/AwkwardSeal.jpg" data-background-transition="slide">
+                </section>
+            </div>
+
+        </div>
+
+        <script src="lib/reveal.js/js/reveal.min.js"></script>
+        <script src="lib/reveal.js/lib/js/head.min.js"></script>
+
+        <script>
+            Reveal.initialize( {
+                controls:  true,
+                progress:  true,
+                history:   true,
+                center:    true,
+                touch:     true,
+                fragments: true,
+                previewLinks: true,
+
+
+                theme: Reveal.getQueryHash().theme,
+                transition: 'linear',
+
+                dependencies: [
+                    { src: 'lib/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } }
+                ]
+            } );
+
+            Reveal.configure( { slideNumber: true } );
+        </script>
+
+    </body>
+
+</html>
